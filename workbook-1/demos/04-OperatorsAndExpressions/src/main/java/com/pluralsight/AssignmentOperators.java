@@ -18,7 +18,7 @@ public class AssignmentOperators
         countDown = countDown - 1;
         countDown -= 1;
         countDown--;
-        System.out.println("countDown started at 10, and decremented 3 times: " + counter);
+        System.out.println("countDown started at 10, and decremented 3 times: " + countDown);
 
 
         // other assignment operators

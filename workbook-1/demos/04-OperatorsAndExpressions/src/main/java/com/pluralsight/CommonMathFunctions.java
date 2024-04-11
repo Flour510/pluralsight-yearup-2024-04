@@ -12,8 +12,8 @@ public class CommonMathFunctions
         // rounding
         System.out.println();
         double doubleValue = 1234.5678;
-        long roudedValue = Math.round(doubleValue);
-        System.out.println(doubleValue + " rounded: " + roudedValue);
+        long roundedValue = Math.round(doubleValue);
+        System.out.println(doubleValue + " rounded: " + roundedValue);
 
 
         // finding max and min values
@@ -35,9 +35,9 @@ public class CommonMathFunctions
         double squaredValue = Math.pow(baseNumber, exponent);
         System.out.println("5 squared: " + squaredValue);
 
-        // calculating the squareroot of a value
-        int squaredNumber = 81;
-        double squareRootValue = Math.sqrt(squaredValue);
-        System.out.println("The square root of 81 is " + squareRootValue);
+        // calculating the squareRoot of a value
+        int squareRootValue = 81;
+        double squareRoot = Math.sqrt(squareRootValue);
+        System.out.println("The square root of 81 is " + squareRoot);
     }
 }

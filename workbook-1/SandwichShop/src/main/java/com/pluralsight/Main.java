@@ -3,7 +3,8 @@ package com.pluralsight;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner userInput = new Scanner(System.in);
 
         // declare constants
@@ -45,16 +46,21 @@ public class Main {
 
         // calculate discount based on age and size of selection
         if (customerAge <= 17) {
+
             System.out.println("You will receive the 10% Student discount! ");
             totalPrice = sandwichSizeSelection.equals(size1) ?
                     size1_BasePrice * (1 - student17YearsOldOrYoungerDiscount) :
                     size2_BasePrice * (1 - student17YearsOldOrYoungerDiscount);
+
         } else if (customerAge >= 65) {
+
             System.out.println("You will receive the 20% Senior discount! ");
             totalPrice = sandwichSizeSelection.equals(size1) ?
                     size1_BasePrice * (1 - senior65YearsOldOrOlderDiscount) :
                     size2_BasePrice * (1 - senior65YearsOldOrOlderDiscount);
+
         } else if (customerAge >= 18 && customerAge <= 64) {
+
             System.out.println("You do not qualify for one of our Student or Senior discounts at this time.");
             totalPrice = sandwichSizeSelection.equals(size1) ? size1_BasePrice : size2_BasePrice;
         }

@@ -17,6 +17,19 @@ public class CellPhoneApplication
         System.out.println("Model: " + newPhone.getModel());
         System.out.println("Carrier: " + newPhone.getCarrier());
         System.out.println("Owner: " + newPhone.getOwner());
+
+        // create a second instance of CellPhone
+        CellPhone cellPhone1 = new CellPhone(123456," " + "(510) 866-8164", "iPhone 13", "Verizon", "Flor Preciado");
+        CellPhone cellPhone2 = new CellPhone(654321, " " + "(855) 555-2222", "Samsung Galaxy S21", "AT&T", "John Doe");
+
+        display(cellPhone1);
+        display(cellPhone2);
+
+        // dialing a phone number
+        cellPhone1.dial(" " + "(510) 866-8164");
+        cellPhone1.dial( cellPhone2.getPhoneNumber() );
+        cellPhone2.dial( cellPhone1.getPhoneNumber() );
+
     }
 
     public static CellPhone register()
@@ -48,9 +61,27 @@ public class CellPhoneApplication
         // create a new CellPhone object with the provided information
         CellPhone phone = new CellPhone(serialNumber, phoneNumber, model, carrier, owner);
         return phone;
+
+
     }
 
+    public static void display(CellPhone phone)
+    {
+        System.out.println(); // line break
+        System.out.println("Serial Number: " + phone.getSerialNumber());
+        System.out.println("Phone Number: " + phone.getPhoneNumber());
+        System.out.println("Model: " + phone.getModel());
+        System.out.println("Carrier: " + phone.getCarrier());
+        System.out.println("Owner: " + phone.getOwner());
+        System.out.println();
+
+    }
+
+
+
 }
+
+
 
 
 

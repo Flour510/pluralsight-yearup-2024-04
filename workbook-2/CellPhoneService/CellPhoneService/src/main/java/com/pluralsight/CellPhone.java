@@ -28,6 +28,12 @@ public class CellPhone {
 
     }
 
+    // accepts a phone number parameter and displays the message
+    public void dial(String phoneNumber)
+    {
+        System.out.println(owner + "'s phone is calling" + phoneNumber);
+    }
+
     // getters and setters for 5 data members
     public int getSerialNumber()
     {
@@ -70,6 +76,8 @@ public class CellPhone {
     {
         this.owner = owner;
     }
+
+
 
 }
 

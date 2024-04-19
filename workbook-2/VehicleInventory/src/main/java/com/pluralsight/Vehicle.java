@@ -5,10 +5,10 @@ public class Vehicle
     private long vehicleId;
     private String makeModel;
     private String color;
-    private String odometerReading;
+    private int odometerReading;
     private double price;
 
-    public Vehicle(long vehicleId, String makeModel, String color, String odometerReading, double price)
+    public Vehicle(long vehicleId, String makeModel, String color, int odometerReading, double price)
     {
         this.vehicleId = vehicleId;
         this.makeModel = makeModel;
@@ -47,12 +47,12 @@ public class Vehicle
         this.color = color;
     }
 
-    public String getOdometerReading()
+    public int getOdometerReading()
     {
         return odometerReading;
     }
 
-    public void setOdometerReading(String odometerReading)
+    public void setOdometerReading(int odometerReading)
     {
         this.odometerReading = odometerReading;
     }

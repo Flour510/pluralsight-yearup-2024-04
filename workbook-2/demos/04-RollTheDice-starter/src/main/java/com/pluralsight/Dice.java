@@ -9,8 +9,9 @@ public class Dice
     // roll dice
     public int roll()
     {
-        int randomNumber = (int) (Math.random() * 6) + 1;
-        return randomNumber;
+        // generates number between 1 and 6
+        return (int)(Math.random() * 6) + 1;
+
     }
 
 }

@@ -21,7 +21,7 @@ public class Main
 
 
         int choice = 0;
-        while(choice != 5)
+        while(choice != 6)
         {
             // print the home screen
             System.out.println();
@@ -31,7 +31,8 @@ public class Main
             System.out.println("2 - Search by make/model");
             System.out.println("3 - Search by price range");
             System.out.println("4 - Search by color");
-            System.out.println("5 - Quit");
+            System.out.println("5 - Add new vehicle");
+            System.out.println("6 - Quit");
             System.out.println();
             System.out.println("Enter your command");
             choice = Integer.parseInt(userInput.nextLine());
@@ -55,6 +56,10 @@ public class Main
                     searchByColor(vehicle);
                     break;
                 case 5:
+                    // add vehicle
+                    vehicle = addVehicle(vehicle);
+                    break;
+                case 6:
                     System.out.println();
                     System.out.println("Goodbye!");
                     break;
@@ -142,15 +147,38 @@ public class Main
     }
 
     // bonus (optional)
-    public static void addVehicle(Vehicle[] vehicles)
+    public static Vehicle[] addVehicle(Vehicle[] vehicles)
     {
         // get user input
+        System.out.println();
+        System.out.println("Enter new vehicle information: ");
+        System.out.println("---------------------------------------------");
+        System.out.println("Enter the Vehicle ID: (6 Digits) ");
+        long vehicleId  = userInput.nextLong();
+        userInput.nextLine();
+
+        System.out.println("Enter Make Model: ");
+        String makeModel = userInput.nextLine();
+        System.out.println("Enter Color: ");
+        String color = userInput.nextLine();
+        System.out.println("Enter Odometer Reading: ");
+        int odometerReading = userInput.nextInt();
+        System.out.println("Enter Price: ");
+        double price = userInput.nextDouble();
+        userInput.nextLine();
 
         // create a vehicle
+        Vehicle newVehicle = new Vehicle(vehicleId, makeModel, color, odometerReading, price);
 
         // add it to the inventory
+        Vehicle[] updatedVehicles = new Vehicle[vehicles.length + 1];
+        System.arraycopy(vehicles, 0, updatedVehicles, 0, vehicles.length);
+        updatedVehicles[vehicles.length] = newVehicle;
+
+        return updatedVehicles;
 
         // hint: you will need to create a new array that is 1 bigger than the old one
         //       then add the new vehicle in the last spot
     }
 }
+

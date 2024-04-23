@@ -101,7 +101,7 @@ public class Main
             Vehicle vehicle = vehicles[i];
             if (vehicle.getMakeModel().equalsIgnoreCase(searchMakeModel))
             {
-                System.out.printf("%-10s %-10s %-10s %-10d %-10f\n", vehicle.getVehicleId(), vehicle.getMakeModel(), vehicle.getColor(), vehicle.getOdometerReading(), vehicle.getPrice());
+             System.out.printf("%-10s %-10s %-10s %-10d %-10f\n", vehicle.getVehicleId(), vehicle.getMakeModel(), vehicle.getColor(), vehicle.getOdometerReading(), vehicle.getPrice());
             }
         }
     }

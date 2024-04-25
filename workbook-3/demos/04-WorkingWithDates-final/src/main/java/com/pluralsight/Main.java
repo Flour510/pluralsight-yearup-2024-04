@@ -15,6 +15,9 @@ public class Main
 
     public static void dateOnly()
     {
+        System.out.println("************************************");
+        System.out.println("            DATE ONLY");
+        System.out.println("************************************");
         LocalDate today = LocalDate.now();
         System.out.println(today);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yy");
@@ -30,6 +33,9 @@ public class Main
 
     public static void timeOnly()
     {
+        System.out.println("************************************");
+        System.out.println("            TIME ONLY");
+        System.out.println("************************************");
         System.out.println();
         LocalTime now = LocalTime.now();
         System.out.println(now);
@@ -41,8 +47,11 @@ public class Main
 
     public static void dateAndTime()
     {
+        System.out.println("************************************");
+        System.out.println("           DATE AND TIME");
+        System.out.println("************************************");
         LocalDateTime now = LocalDateTime.now();
-        ZonedDateTime utcNow = now.atZone(ZoneId.of("Africa/Lagos"));
+        ZonedDateTime utcNow = ZonedDateTime.now(ZoneId.of("UTC"));
         System.out.println();
         System.out.println("Utah: "  + now);
         System.out.println("UTC: " + utcNow);

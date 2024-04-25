@@ -12,7 +12,7 @@ public class Main {
      System.out.println("Enter the name of the story/file: ");
      String fileName = userInput.nextLine();
 
-     String filePath = "files/mary_had_a_little_lamb.txt";
+     String filePath = "file/" + fileName;
 
      File file = new File(filePath);
 

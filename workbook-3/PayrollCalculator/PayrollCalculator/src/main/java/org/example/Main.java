@@ -2,23 +2,25 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 
 public class Main
 {
+    static ArrayList<Employee> employees = new ArrayList<>();
+
     public static void main(String[] args)
     {
-        System.out.println("Hello world!");
+        loadEmployeeData();
+        displayEmployees();
     }
 
-
-    public static void calculateGrossPay()
-    {
-        // method that calculates and returns employee gross pay
-        int getGrossPay() = hoursWorked * payRate;
-        int displayGrossPay;
+    public static void displayEmployees() {
+       for(Employee employee: employees) {
+           System.out.printf("%d %s %.2f\n", employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
+       }
     }
 
     public static void loadEmployeeData()
@@ -39,15 +41,16 @@ public class Main
                   String line = fileScanner.nextLine();
 
                   // split the line on a | (pipe)
-                  String[] columns = line.split("[|]]");
+                  String[] columns = line.split("[|]");
 
                   // get the specific variables
-                  int employeeId = columns[0];
+                  int employeeId = Integer.parseInt(columns[0]);
                   String name = columns[1];
                   double hoursWorked = Double.parseDouble(columns[2]);
                   double payRate = Double.parseDouble(columns[3]);
 
-
+                  Employee employee = new Employee(employeeId, name, hoursWorked, payRate);
+                  employees.add(employee);
               }
 
           }

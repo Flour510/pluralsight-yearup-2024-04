@@ -10,7 +10,7 @@ public class FileWriterDemo
 {
     public static void main(String[] args)
     {
-        String[] languages = {"Java", "C#", "JavaScript", "Python", "SQL"};
+        String[] languages = {"Java", "C#", "JavaScript", "Python", "SQL", "Swift"};
         writeToFile(languages);
     }
 
@@ -23,7 +23,7 @@ public class FileWriterDemo
             for(String line : words)
             {
                 // writer.write only adds the text to a buffer
-                writer.write(line.repeat(200));
+                writer.write(line.repeat(20));
                 writer.write("\n"); // adds a new line
 
                 // writer.flush actually writes it to disk

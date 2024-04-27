@@ -1,3 +1,26 @@
+/*
+For this assignment we were asked to create a shared data style application that
+reads contents of a .csv file and loads the content into the memory of the java application.
+Below are the steps I took to solve this exercise:
+
+1) Created an application: PayrollCalculator
+2) Wrote the private data member attributes inside an Employee class
+3) Created the constructor's for each attribute
+4) Created getters and setters for each attribute
+5) Inside a Main class, wrote a FileReader object inside a loadEmployeeData method to connect the csv file
+6) Using a while loop, read through each line of text
+7) Inside that while loop, split the string by using a | character
+8) Below the while loop, created an Employee object
+9) Inside a displayEmployees method, created a display of employee by calling them by methods inside a for each loop
+
+For Part Two of this exercise we were asked to display payroll report by writing it into a .csv file in a
+different format:
+1) Next we had to prompt the user for input
+2) I did this by creating a method called writePayrollReport
+3) Inside that method, created a scanner to get the user input
+4) Followed by a try / catch object to run the output code inside of
+ */
+
 package org.example;
 
 import java.io.File;
@@ -99,11 +122,6 @@ public class Main
         }
 
 
-
-        // prompt the user to input employee information
-
-        System.out.println("Enter the name of the payroll file to create: ");
-        String payrollFile = scanner.nextLine();
     }
 
 

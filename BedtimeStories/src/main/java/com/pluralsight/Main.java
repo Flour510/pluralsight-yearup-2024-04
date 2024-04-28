@@ -9,14 +9,18 @@ public class Main {
     public static void main(String[] args)
     {
      Scanner userInput = new Scanner(System.in);
+     System.out.println();
      System.out.println("Welcome to the Bedtime Stories File Reader! ");
      System.out.println();
-     System.out.println("Below are your options: ");
-     System.out.println("- goldilocks.txt");
-     System.out.println("- hansel_and_gretel.txt");
-     System.out.println("- mary_had_a_little_lamb.txt");
-     System.out.println();
-     System.out.println("ENTER THE NAME OF THE STORY/FILE OPTION YOU WISH TO OPEN: ");
+     System.out.println("*******************************************************************");
+     System.out.println("                      Below are your options: ");
+     System.out.println("*******************************************************************");
+     System.out.println(" goldilocks.txt");
+     System.out.println(" hansel_and_gretel.txt");
+     System.out.println(" mary_had_a_little_lamb.txt");
+     System.out.println("*******************************************************************");
+     System.out.println("ENTER THE NAME OF THE STORY/FILE OPTION YOU WISH TO OPEN BELOW: ");
+     System.out.println("*******************************************************************");
      String fileName = userInput.nextLine();
 
      String filePath = "file/" + fileName;

@@ -9,6 +9,11 @@ public class Room
     private boolean isDirty;
     private boolean isAvailable;
 
+    // public variables
+    public boolean checkIn;
+    public boolean checkOut;
+    public boolean cleanRoom;
+
     // constructors
     public Room(int numberOfBeds, double price, boolean isOccupied, boolean isDirty, boolean isAvailable)
     {
@@ -65,5 +70,24 @@ public class Room
         boolean isAvailable = !isDirty && !isOccupied ? true : false;
         return isAvailable;
     }
+
+    public checkIn()
+    {
+        boolean checkIn = isOccupied && isDirty;
+        return checkIn;
+    }
+
+    public checkOut()
+    {
+        boolean checkOut = isDirty && !isOccupied && !isAvailable;
+        return checkOut;
+    }
+
+    public cleanRoom()
+    {
+        boolean cleanRoom = checkOut && isDirty && !isOccupied;
+        return cleanRoom;
+    }
+
 
 }

@@ -66,5 +66,4 @@ public class Room
         return isAvailable;
     }
 
-
 }

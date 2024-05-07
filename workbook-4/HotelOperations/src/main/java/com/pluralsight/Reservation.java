@@ -2,6 +2,10 @@ package com.pluralsight;
 
 public class Reservation
 {
+    final double kingPricePerNight = 139.00;
+    final double doublePricePerNight = 124.00;
+    final double weekendAdditionalPrice = 0.10;
+
     private String roomType;
     private int numberOfNights;
     private boolean isWeekend;
@@ -60,10 +64,12 @@ public class Reservation
     private void calculatePricePerNight()
     {
         switch(roomType.toLowerCase()) {
-            case "king":
-                return pricePerNight();
-            case "double":
-                return calculatePricePerNight();
+            case "king" :
+                return kingPricePerNight();
+            case "double" :
+                return doublePricePerNight();
+            case "weekend" :
+                return pricePerNight() + weekendAdditionalPrice;
         }
     }
 }

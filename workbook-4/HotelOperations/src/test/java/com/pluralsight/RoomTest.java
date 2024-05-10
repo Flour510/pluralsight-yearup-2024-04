@@ -13,11 +13,12 @@ class RoomTest
         Room room = new Room(1, 150, false, false);
 
         // act --> THE ONE action that I am testing
-        room.checkIn();
+        //room.checkIn();
+        assertTrue(room.checkIn());
 
         // assert - verify that the action worked as expected
-        boolean isAvailable = room.isAvailable();
-        assertFalse(isAvailable);
+        //boolean isAvailable = room.isAvailable();
+        assertFalse(room.isAvailable());
 
 
     }
@@ -26,14 +27,14 @@ class RoomTest
     public void checkOut_shouldMakeRoomIsReadyToBeCleaned()
     {
         // arrange
-        Room room = new Room(1, 150, false, true);
+        Room room = new Room(1, 150, true, true);
 
         // act --> THE ONE action that I am testing
-        room.checkOut();
+        assertTrue(room.checkOut());
 
         // assert - verify that the action worked as expected
-        boolean isAvailable = room.isAvailable();
-        assertTrue(isAvailable);
+        //boolean isAvailable = room.isAvailable();
+        assertTrue(room.isAvailable());
     }
 
 }

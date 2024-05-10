@@ -29,10 +29,11 @@ class RoomTest
         Room room = new Room(1, 150, false, true);
 
         // act --> THE ONE action that I am testing
-        boolean
+        room.checkOut();
 
         // assert - verify that the action worked as expected
-
+        boolean isAvailable = room.isAvailable();
+        assertTrue(isAvailable);
     }
 
 }

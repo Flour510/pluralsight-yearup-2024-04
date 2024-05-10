@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.time.LocalTime;
-import java.time.LocalDateTime;
 
 public class Employee
 
@@ -15,20 +14,20 @@ public class Employee
     private String department;
     private double payRate;
     private double hoursWorked;
-    private LocalTime time;
+    private LocalTime punchInTime;
+    private LocalTime punchOutTime;
 
-    // public variables
-    public double punchIn;
-    public double punchOut;
-
-    public Employee(int employeeId, String name, String department, double payRate, double hoursWorked, LocalTime time)
+    public Employee(int employeeId, String name, String department, double payRate)
     {
         this.employeeId = employeeId;
         this.name = name;
         this.department = department;
         this.payRate = payRate;
+    }
+
+    public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
+        this(employeeId, name, department, payRate);
         this.hoursWorked = hoursWorked;
-        this.time = time;
     }
 
     public int getEmployeeId()
@@ -64,33 +63,43 @@ public class Employee
 
     public double getTotalPay()
     {
-        return getRegularHours() + getOverTimeHours();
+        return getRegularPay() + getOverTimeHours();
     }
 
-    public double getRegularHours()
+    public double getRegularPay()
     {
         return isOverTime() ? regularHours * payRate : hoursWorked * payRate;
     }
 
     public double getOverTimeHours()
     {
-        return isOverTime() ? (hoursWorked - regularHours) * payRate : 0;
+        return isOverTime() ? (hoursWorked - regularHours) : 0;
     }
 
-    public LocalTime getTime()
+    public void punchIn(LocalTime time)
     {
-        return time;
+        punchInTime = time;
     }
 
-    public double punchIn()
+    public void punchOut(LocalTime time)
     {
-        return punchIn = new LocalTime();
+        punchOutTime = time;
+        hoursWorked = calculateHoursWorked(punchInTime, punchOutTime);
     }
 
-    public double punchOut()
+    private double calculateHoursWorked(LocalTime punchInTime, LocalTime punchOutTime)
     {
-        return punchOut = hoursWorked;
-    }
+        // calculate total hours worked
+        long hoursWorked = punchOutTime.getHour() - punchInTime.getHour();
 
+        if (hoursWorked > regularHours)
+        {
+            double overTimeHours = hoursWorked - regularHours;
+
+            return regularHours + overTimeHours;
+        } else {
+            return hoursWorked;
+        }
+    }
 
 }

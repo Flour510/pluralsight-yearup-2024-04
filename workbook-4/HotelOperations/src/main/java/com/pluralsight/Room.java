@@ -7,42 +7,26 @@ public class Room
     private double price;
     private boolean isOccupied;
     private boolean isDirty;
-    private boolean isAvailable;
-
-    // public variables
-    public boolean checkIn;
-    public boolean checkOut;
-    public boolean cleanRoom;
 
     // constructors
-    public Room(int numberOfBeds, double price, boolean isOccupied, boolean isDirty, boolean isAvailable)
+    public Room(int numberOfBeds, double price, boolean isOccupied, boolean isDirty)
     {
         this.numberOfBeds = numberOfBeds;
         this.price = price;
         this.isOccupied = isOccupied;
         this.isDirty = isDirty;
-        this.isAvailable = isAvailable;
+
     }
 
     // getters and setters
-    public int getNumberOfBeds()
+    public int getNumberOfBeds() // no setter necessary because number of beds will not be changing
     {
         return numberOfBeds;
     }
 
-    public void setNumberOfBeds(int numberOfBeds)
-    {
-        this.numberOfBeds = numberOfBeds;
-    }
-
-    public double getPrice()
+    public double getPrice() // no setter necessary because price will not be changing
     {
         return price;
-    }
-
-    public void setPrice(double price)
-    {
-        this.price = price;
     }
 
     public boolean isOccupied()
@@ -50,44 +34,40 @@ public class Room
         return isOccupied;
     }
 
-    public void setOccupied(boolean isOccupied)
-    {
-        this.isOccupied = isOccupied;
-    }
-
     public boolean isDirty()
     {
         return isDirty;
     }
 
-    public void setDirty(boolean dirty)
-    {
-        this.isDirty = dirty;
-    }
-
     public boolean isAvailable()
     {
-        boolean isAvailable = !isDirty && !isOccupied ? true : false;
-        return isAvailable;
+        return !isOccupied && !isDirty;
     }
 
-    public checkIn()
+    public boolean checkIn()
     {
-        boolean checkIn = isOccupied && isDirty;
-        return checkIn;
+       if(this.isAvailable()){
+           this.isDirty = true;
+           this.isOccupied = true;
+           return true;
+       }
+        return false;
     }
 
-    public checkOut()
+    public boolean checkOut()
     {
-        boolean checkOut = isDirty && !isOccupied && !isAvailable;
-        return checkOut;
+       if(cleanRoom()){
+          this.isOccupied = false;
+          return true;
+       }
+       return false;
     }
 
-    public cleanRoom()
+    public boolean cleanRoom()
     {
-        boolean cleanRoom = checkOut && isDirty && !isOccupied;
-        return cleanRoom;
-    }
+        this.isDirty = false;
+        return true;
 
+    }
 
 }

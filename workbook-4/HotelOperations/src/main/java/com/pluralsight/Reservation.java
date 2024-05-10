@@ -1,75 +1,68 @@
 package com.pluralsight;
 
-public class Reservation
-{
+public class Reservation {
     final double kingPricePerNight = 139.00;
     final double doublePricePerNight = 124.00;
-    final double weekendAdditionalPrice = 0.10;
+    final double weekendAdditionalPrice = 1.10;
 
     private String roomType;
     private int numberOfNights;
     private boolean isWeekend;
-    private double pricePerNight;
 
-    public Reservation(String roomType, int numberOfNights, boolean isWeekend)
-    {
+    public Reservation(String roomType, int numberOfNights, boolean isWeekend) {
         this.roomType = roomType;
         this.numberOfNights = numberOfNights;
         this.isWeekend = isWeekend;
         calculatePricePerNight();
     }
 
-    public String getRoomType()
-    {
+    public String getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType)
-    {
+    public void setRoomType(String roomType) {
         this.roomType = roomType;
         calculatePricePerNight();
     }
 
-    public double getPrice()
-    {
-        return numberOfNights * pricePerNight;
+    public double getPrice() {
+        return numberOfNights * calculatePricePerNight();
     }
 
-    public int getNumberOfNights()
-    {
+    public int getNumberOfNights() {
         return numberOfNights;
     }
 
-    public void setNumberOfNights(int numberOfNights)
-    {
+    public void setNumberOfNights(int numberOfNights) {
         this.numberOfNights = numberOfNights;
+        calculatePricePerNight();
     }
 
-    public boolean isWeekend()
-    {
+    public boolean isWeekend() {
         return isWeekend;
     }
 
-    public void setWeekend(boolean weekend)
-    {
+    public void setWeekend(boolean weekend) {
         isWeekend = weekend;
         calculatePricePerNight();
     }
 
-    public double getPricePerNight()
-    {
-        return pricePerNight;
-    }
-
-    private void calculatePricePerNight()
-    {
-        switch(roomType.toLowerCase()) {
-            case "king" :
-                return kingPricePerNight();
-            case "double" :
-                return doublePricePerNight();
-            case "weekend" :
-                return pricePerNight() + weekendAdditionalPrice;
+    private double calculatePricePerNight() {
+        double basePrice;
+        switch (roomType.toLowerCase()) {
+            case "king":
+                basePrice = kingPricePerNight;
+                break;
+            case "double":
+                basePrice = doublePricePerNight;
+                break;
+            default:
+                basePrice = 0.0;
         }
+
+        if (isWeekend) {
+            basePrice += basePrice * weekendAdditionalPrice;
+        }
+        return basePrice;
     }
 }

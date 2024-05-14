@@ -29,5 +29,9 @@ public class Main
         employee.haveLunch();
         employee.earnPayRaise(.1);
         System.out.println(employee.getSalary());
+
+        System.out.println(person.toString());
+        System.out.println(employee.toString());
+        System.out.println( person.equals(employee));
     }
 }

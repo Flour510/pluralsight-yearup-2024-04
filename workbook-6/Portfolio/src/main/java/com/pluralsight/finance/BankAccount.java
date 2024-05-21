@@ -16,26 +16,23 @@ public class BankAccount implements Valuable
     
     public double deposit(double amount)
     {
-        return deposit(amount);
+        balance += amount;
+        return balance;
     }
 
     public double withdraw(double amount)
     {
-        return withdraw(amount);
+        balance -= amount;
+        return balance;
     }
 
     @Override
     public double getValue() {
-        return 0;
+        return balance;
     }
 
     @Override
     public String getName() {
-        return "";
-    }
-
-    @Override
-    public double getMarketValue() {
-        return 0;
+        return name;
     }
 }

@@ -5,5 +5,4 @@ public interface Valuable
     double getValue();
 
     String getName();
-    double getMarketValue();
 }

@@ -12,7 +12,7 @@ public class Gold extends FixedAsset
     @Override
     public double getValue()
     {
-        System.out.println("Get value of gold by weight. ");
-        return weight;
+        //System.out.println("Get value of gold by weight. ");
+        return weight * getMarketValue();
     }
 }

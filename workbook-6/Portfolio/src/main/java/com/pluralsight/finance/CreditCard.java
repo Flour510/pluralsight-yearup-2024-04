@@ -14,27 +14,25 @@ public class CreditCard implements Valuable
         this.balance = balance;
     }
 
-    public void BankAccount(String name, String accountNumber, double balance)
+    public double charge(double amount)
     {
-
+        balance += amount;
+        return balance;
     }
 
-    public double charge(double amount) { return amount; }
-
-    public double pay(double amount) { return amount; }
+    public double pay(double amount)
+    {
+        balance -= amount;
+        return balance;
+    }
 
     @Override
     public double getValue() {
-        return 0;
+        return - balance;
     }
 
     @Override
     public String getName() {
-        return "";
-    }
-
-    @Override
-    public double getMarketValue() {
-        return 0;
+        return name;
     }
 }

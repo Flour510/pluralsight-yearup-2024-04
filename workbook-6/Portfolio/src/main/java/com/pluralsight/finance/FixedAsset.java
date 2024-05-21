@@ -16,7 +16,6 @@ public abstract class FixedAsset implements Valuable
     @Override
     public String getName() { return name; }
 
-    @Override
     public double getMarketValue() { return marketValue; }
 
     public void Asset(String name, double value)

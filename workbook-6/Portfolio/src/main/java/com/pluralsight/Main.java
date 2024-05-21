@@ -44,7 +44,5 @@ public class Main {
         System.out.println("Net Value: $" + portfolio.getValue());
         System.out.println("Most Valuable Asset: " + portfolio.getMostValuable().getName());
         System.out.println("Least Valuable Asset: " + portfolio.getLeastValuable().getName());
-
-
     }
 }

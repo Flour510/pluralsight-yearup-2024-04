@@ -71,5 +71,4 @@ public class Portfolio
     public String getName() {
         return name;
     }
-
 }

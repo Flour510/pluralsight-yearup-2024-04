@@ -15,7 +15,6 @@ public class Jewelry extends FixedAsset
     @Override
     public double getValue()
     {
-        //System.out.println("Get Jewelry Value. ");
         // calculate value by karat
         return 1000;
     }

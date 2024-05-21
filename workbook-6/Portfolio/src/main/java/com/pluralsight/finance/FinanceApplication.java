@@ -11,6 +11,5 @@ public class FinanceApplication
 
        // try to deposit money into both accounts
        account1.deposit(100);
-       //account2.deposit(100);
     }
 }

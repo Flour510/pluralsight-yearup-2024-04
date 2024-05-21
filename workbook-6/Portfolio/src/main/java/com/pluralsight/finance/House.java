@@ -17,7 +17,6 @@ public class House extends FixedAsset
     @Override
     public double getValue()
     {
-        //System.out.println("Get house market value. ");
         return squareFeet * getMarketValue();
     }
 }

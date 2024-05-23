@@ -9,6 +9,7 @@ public class Employee extends Person
         super(firstName, lastName, age);
         this.salary = salary;
     }
+
     public Employee()
     {
     }

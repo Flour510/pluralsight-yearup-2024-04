@@ -119,7 +119,7 @@ class Assessment_PersonServiceTests
         int expected = person2.getAge();
 
         // act
-        int actual = service.findOldestAge(people);
+        int actual = service.findYoungestAge(people);
 
         // assert
         assertEquals(expected, actual, "Because " + person2.getFirstName() + " is the yongest person in the list");
@@ -145,7 +145,7 @@ class Assessment_PersonServiceTests
     {
         // arrange
         // act
-        List<Person> actualList = service.sortYoungestFirst(people);
+        List<Person> actualList = service.sortOldestFirst(people);
 
         // assert
         assertEquals(people.size(), actualList.size(), "Because the size of the list should not have changed");

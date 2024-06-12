@@ -17,8 +17,8 @@ public class Main {
 
             // 1. open a connection to the database
             // use the database URL to point to the correct database
-            Connection connection;
-            connection = DriverManager.getConnection(
+            // Connection connection;
+            Connection connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/northwind",
                     username,
                     password);

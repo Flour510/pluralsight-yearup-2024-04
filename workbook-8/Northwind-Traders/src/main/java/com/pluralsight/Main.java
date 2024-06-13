@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args)
     {
         String username = "root";
-        String password = "P@ssw0rd";
+        String password = "YUm15510n ";
 
         try {
             // load the MySQL Driver
@@ -25,9 +25,9 @@ public class Main {
 
             // 2. execute a statement
             String sql = """
-                    SELECT Id
-                        , Name
-                        , CountryCode
+                    SELECT ProductID
+                        , ProductName
+                        , UnitPrice FROM Products
                     """;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -35,11 +35,11 @@ public class Main {
             // 2 a. - read the results
             while(resultSet.next())
             {
-                int id = resultSet.getInt("Id");
-                String name = resultSet.getString("Name");
-                String country = resultSet.getString("CountryCode");
+                int productId = resultSet.getInt("ProductID");
+                String productName = resultSet.getString("ProductName");
+                double unitPrice = resultSet.getDouble("UnitPrice");
 
-                System.out.printf("%3d %-30s %s\n", id, name, country);
+                System.out.printf("%3d %-30s %.2f\n", productId, productName, unitPrice);
             }
 
             // 3. close the connection

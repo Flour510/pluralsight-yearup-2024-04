@@ -31,6 +31,9 @@ public class Main {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
+            System.out.println();
+            System.out.println("      Products Sold By Northwind");
+            System.out.println("*".repeat(40));
             // read the results
             while(resultSet.next())
             {

@@ -17,7 +17,6 @@ public class Main {
 
             // 1. open a connection to the database
             // use the database URL to point to the correct database
-            // Connection connection;
             Connection connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/northwind",
                     username,
@@ -32,7 +31,7 @@ public class Main {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
-            // 2 a. - read the results
+            // read the results
             while(resultSet.next())
             {
                 int productId = resultSet.getInt("ProductID");
@@ -51,3 +50,4 @@ public class Main {
 
     }
 }
+// it works :)

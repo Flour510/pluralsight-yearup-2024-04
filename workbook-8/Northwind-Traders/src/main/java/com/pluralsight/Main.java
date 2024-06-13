@@ -26,22 +26,27 @@ public class Main {
             String sql = """
                     SELECT ProductID
                         , ProductName
-                        , UnitPrice FROM Products
+                        , UnitPrice 
+                        , UnitsInStock FROM Products
                     """;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
+            // heading
             System.out.println();
-            System.out.println("      Products Sold By Northwind");
-            System.out.println("*".repeat(40));
+            System.out.println("*************** Products Sold By Northwind *****************");
+            System.out.println(" Id         Name                             Price   Stock");
+            System.out.println("_".repeat(59));
+
             // read the results
             while(resultSet.next())
             {
                 int productId = resultSet.getInt("ProductID");
                 String productName = resultSet.getString("ProductName");
                 double unitPrice = resultSet.getDouble("UnitPrice");
+                int unitsInStock = resultSet.getInt("UnitsInStock");
 
-                System.out.printf("%3d %-30s %.2f\n", productId, productName, unitPrice);
+                System.out.printf("%3d %-40s %.2f %6d\n", productId, productName, unitPrice, unitsInStock);
             }
 
             // 3. close the connection

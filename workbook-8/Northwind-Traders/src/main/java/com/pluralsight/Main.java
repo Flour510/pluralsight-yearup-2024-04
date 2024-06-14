@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
@@ -32,6 +29,7 @@ public class Main {
                 System.out.println("What do you want to do?");
                 System.out.println("    1) Display all products");
                 System.out.println("    2) Display all customers");
+                System.out.println("    3) Display all categories");
                 System.out.println("    0) Exit");
                 System.out.println("Select an option: ");
                 int option = scanner.nextInt();
@@ -46,6 +44,11 @@ public class Main {
                 } else if (option == 2) {
                     displayAllCustomers(connection);
                     System.out.println("_".repeat(118));
+                } else if (option == 3){
+                    displayAllCategories(connection);
+                    System.out.println("Enter Category ID to display products: ");
+                    int categoryId = scanner.nextInt();
+                    displayProductsByCategory(connection, categoryId);
                 } else {
                     System.out.println("Invalid option. Please try again. ");
                 }
@@ -129,6 +132,66 @@ public class Main {
             statement.close();
         } catch (Exception e) {
             System.out.println("Error loading customers: " + e.getMessage());
+        }
+    }
+
+    private static void displayAllCategories(Connection connection) {
+        try {
+            String sql = """
+            SELECT CategoryID, CategoryName
+            FROM Categories
+            ORDER BY CategoryID
+            """;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            System.out.println();
+            System.out.println("******************************************************** Categories ********************************************************");
+            System.out.println("Category ID          Category Name");
+            System.out.println("_".repeat(60));
+
+            while (resultSet.next()) {
+                int categoryId = resultSet.getInt("CategoryID");
+                String categoryName = resultSet.getString("CategoryName");
+
+                System.out.printf("%-30s %-35s\n", categoryId, categoryName);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Error loading categories: " + e.getMessage());
+        }
+    }
+
+    private static void displayProductsByCategory(Connection connection, int categoryId) {
+        try {
+            String sql = """
+            SELECT ProductID, ProductName, UnitPrice, UnitsInStock
+            FROM Products
+            WHERE CategoryID = ?
+            """;
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, categoryId);
+            ResultSet resultSet = statement.executeQuery();
+
+            System.out.println();
+            System.out.println("******************************************************** Products ********************************************************");
+            System.out.println("Product ID          Product Name               Unit Price           Units In Stock");
+            System.out.println("_".repeat(100));
+
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("ProductID");
+                String productName = resultSet.getString("ProductName");
+                double unitPrice = resultSet.getDouble("UnitPrice");
+                int unitsInStock = resultSet.getInt("UnitsInStock");
+
+                System.out.printf("%-25s %-35s %-20s %s\n", productId, productName, unitPrice, unitsInStock);
+            }
+
+            resultSet.close();
+            statement.close();
+        } catch (Exception e) {
+        System.out.println("Error loading Products by Category: " + e.getMessage());
         }
     }
 }

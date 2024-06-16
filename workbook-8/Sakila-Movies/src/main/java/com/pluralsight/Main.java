@@ -22,11 +22,11 @@ public class Main {
             dataSource.setPassword(password);
 
             System.out.println();
-            System.out.println("*************** WELCOME TO SAKILA MOVIES DATABASE ***************");
+            System.out.println("*************** \uD83C\uDFAC WELCOME TO SAKILA MOVIES DATABASE \uD83C\uDF9E\uFE0F ***************");
             while (true) {
                 // prompt the user for input
                 System.out.println();
-                System.out.println("Enter the last name of an actor you like: ");
+                System.out.println("Enter the last name of an actor you like \uD83C\uDFAD: ");
                 String lastName = scanner.nextLine().trim();
 
                 if (!lastName.isEmpty()) {
@@ -61,14 +61,14 @@ public class Main {
             try (ResultSet resultSet = statement.executeQuery()) {
                 System.out.println();
                 System.out.println("*************** ACTORS WITH LAST NAME " + lastName.toUpperCase() + " ***************");
-                if (!resultSet.isBeforeFirst()) {
-                    System.out.println("No actors found with the last name: " + lastName);
-                } else {
-                    while (resultSet.next()) {
+                if (resultSet.next()) {
+                    do {
                         String firstName = resultSet.getString("first_name");
                         String actorLastName = resultSet.getString("last_name");
                         System.out.println(firstName + " " + actorLastName);
-                    }
+                    } while (resultSet.next());
+                } else {
+                    System.out.println("No actors found with the last name: " + lastName);
                 }
             }
         } catch (Exception e) {
@@ -89,13 +89,13 @@ public class Main {
             try (ResultSet resultSet = statement.executeQuery()) {
                 System.out.println();
                 System.out.println("*************** FILMS WITH " + firstName.toUpperCase() + " " + lastName.toUpperCase() + " ***************");
-                if (!resultSet.isBeforeFirst()) {
-                    System.out.println("No films found for the actor: " + firstName + " " + lastName);
-                } else {
-                    while (resultSet.next()) {
+                if (resultSet.next()) {
+                    do {
                         String title = resultSet.getString("title");
                         System.out.println(title);
-                    }
+                    } while (resultSet.next());
+                } else {
+                    System.out.println("No films found for the actor: " + firstName + " " + lastName);
                 }
             }
         } catch (Exception e){

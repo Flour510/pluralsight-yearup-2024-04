@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -12,14 +14,23 @@ public class Main {
 
         try {
             // load the MySQL Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Class.forName("com.mysql.cj.jdbc.Driver");
 
             // open a connection to the database
             // use the database URL to point to the correct database
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/northwind",
-                    username,
-                    password);
+            // connection = DriverManager.getConnection(
+                    // "jdbc:mysql://localhost:3306/northwind",
+                    // username,
+                    // password);
+
+            // create a DataSource instance and configure it
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setURL("jdbc:mysql://localhost:3306/northwind");
+            dataSource.setUser(username);
+            dataSource.setPassword(password);
+
+            // open a connection to the database using DataSource
+            connection = dataSource.getConnection();
 
             System.out.println();
             System.out.println("************** WELCOME TO NORTHWIND DATABASE **************");

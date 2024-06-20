@@ -2,6 +2,7 @@ package com.pluralsight.demo.controllers;
 
 import com.pluralsight.demo.models.Category;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
@@ -23,4 +24,8 @@ public class CategoriesController
    {
        return categories;
    }
+
+   // return a specific category
+   @GetMapping("/categories/{id}")
+   public Category getById(@PathVariable int id) { return categories.get(id); }
 }

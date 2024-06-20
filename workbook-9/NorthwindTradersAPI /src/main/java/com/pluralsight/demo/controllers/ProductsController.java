@@ -9,8 +9,8 @@ import java.util.List;
 @RestController
 public class ProductsController
 {
-    @GetMapping("/products")
-    public List<String> getAllProducts() {
-        return Arrays.asList("Chai", "Chang", "Aniseed Syrup", "Chef Anton's Cajun Seasoning");
-    }
+     @GetMapping("/products")
+     public List<String> getAllProducts() {
+         return Arrays.asList("Chai", "Chang", "Aniseed Syrup", "Chef Anton's Cajun Seasoning");
+     }
 }

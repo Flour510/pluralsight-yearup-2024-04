@@ -30,7 +30,7 @@ public class JdbcCategoryDao implements CategoryDao
         {
             while (resultSet.next())
             {
-                Category category = mapRowToProduct(resultSet);
+                Category category = mapRowToCategory(resultSet);
                 categories.add(category);
             }
 
@@ -53,7 +53,7 @@ public class JdbcCategoryDao implements CategoryDao
 
             if (resultSet.next())
             {
-                category = mapRowToProduct(resultSet);
+                category = mapRowToCategory(resultSet);
             }
 
         } catch (SQLException e) {
@@ -62,7 +62,34 @@ public class JdbcCategoryDao implements CategoryDao
         return category;
     }
 
-    private Category mapRowToProduct(ResultSet resultSet) throws SQLException
+    @Override
+    public Category insert(Category category)
+    {
+        String sql = "INSERT INTO Categories (categoryName) VALUES (?)";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS))
+        {
+            statement.setString(1, category.getCategoryName());
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating category has failed. No rows were affected. ");
+            }
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    category.setCategoryId(generatedKeys.getInt(1));
+                } else {
+                throw new SQLException("Creating category failed. No ID was obtained. ");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return category;
+    }
+
+    private Category mapRowToCategory(ResultSet resultSet) throws SQLException
     {
         int categoryId = resultSet.getInt("CategoryId");
         String categoryName = resultSet.getString("CategoryName");

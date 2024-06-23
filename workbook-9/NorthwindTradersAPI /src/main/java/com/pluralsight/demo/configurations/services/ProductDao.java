@@ -9,4 +9,6 @@ public interface ProductDao
     Product getById(int id);
 
     List<Product> searchProducts(String productName, String searchProduct);
+
+    Product insert(Product product);
 }

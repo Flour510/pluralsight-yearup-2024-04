@@ -3,6 +3,7 @@ package com.pluralsight.demo.controllers;
 import com.pluralsight.demo.configurations.services.CategoryDao;
 import com.pluralsight.demo.models.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +40,12 @@ public class CategoriesController
    @PutMapping("/categories/{id}")
    public void updateCategory(@PathVariable int id, @RequestBody Category category) {
       categoryDao.update(id, category);
+   }
+
+   // delete a category
+   @DeleteMapping("/categories/{id}")
+   public ResponseEntity<String> deleteCategory(@PathVariable int id) {
+      categoryDao.delete(id);
+      return ResponseEntity.ok("Category deleted successfully");
    }
 }

@@ -3,6 +3,7 @@ package com.pluralsight.demo.controllers;
 import com.pluralsight.demo.configurations.services.ProductDao;
 import com.pluralsight.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -37,5 +38,12 @@ public class ProductsController
     @PutMapping("/products/{id}")
     public void updateProduct(@PathVariable int id, @RequestBody Product product) {
         productDao.update(id, product);
+    }
+
+    // delete a product
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
+        productDao.delete(id);
+        return ResponseEntity.ok("Product deleted successfully");
     }
 }

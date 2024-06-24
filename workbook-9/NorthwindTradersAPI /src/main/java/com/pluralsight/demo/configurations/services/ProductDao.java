@@ -11,4 +11,6 @@ public interface ProductDao
     List<Product> searchProducts(String productName, String searchProduct);
 
     Product insert(Product product);
+
+    void update(int id, Product product);
 }

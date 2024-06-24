@@ -32,4 +32,10 @@ public class ProductsController
     public Product addProduct(@RequestBody Product product) {
         return productDao.insert(product);
     }
+
+    // update a product
+    @PutMapping("/products/{id}")
+    public void updateProduct(@PathVariable int id, @RequestBody Product product) {
+        productDao.update(id, product);
+    }
 }

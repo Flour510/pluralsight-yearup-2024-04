@@ -34,4 +34,10 @@ public class CategoriesController
    {
       return categoryDao.insert(category);
    }
+
+   // update a category
+   @PutMapping("/categories/{id}")
+   public void updateCategory(@PathVariable int id, @RequestBody Category category) {
+      categoryDao.update(id, category);
+   }
 }

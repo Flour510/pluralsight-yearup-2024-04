@@ -21,4 +21,9 @@ public class Category
     public String getCategoryName() { return categoryName; }
 
     public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+
+    // keep or throw?
+    public String getDescription() {
+        return null;
+    }
 }

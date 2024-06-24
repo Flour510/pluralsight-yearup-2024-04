@@ -1,5 +1,6 @@
 package com.pluralsight.demo.configurations.services;
 
+import com.pluralsight.demo.controllers.ProductsController;
 import com.pluralsight.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -96,6 +97,21 @@ public class JdbcProductDao implements ProductDao
          e.printStackTrace();
      }
      return product;
+    }
+
+    @Override
+    public void update(int id, Product product) {
+        String sql = "UPDATE Products SET productName = ?, categoryId = ?, unitPrice = ? WHERE productId = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setString(1, product.getProductName());
+            statement.setInt(2, product.getCategoryId());
+            statement.setDouble(3, product.getUnitPrice());
+            statement.setInt(4, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private Product mapRowToProduct(ResultSet resultSet) throws SQLException
